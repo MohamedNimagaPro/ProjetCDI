@@ -1,6 +1,6 @@
-/* --- DONNÉES POKÉMON (Familles Complètes & Stats) --- */
+// data des pokémons avec stats et attaques
 const pokemonData = [
-    // --- STARTERS ---
+    // --- starters ---
     { id: 810, name: "Ouistempo", type: ["Plante"], rarity: "Commune", desc: "Il frappe avec son bâton pour garder le rythme.", evoChain: [810, 811, 812],
       stats: { hp: 50, atk: 65, def: 50 }, attacks: [{name: "Griffure", dmg: 40}, {name: "Fouet Lianes", dmg: 45}] },
     { id: 811, name: "Badabouin", type: ["Plante"], rarity: "Peu Commune", desc: "Il s'entraîne à battre le rythme sur des troncs.", evoChain: [810, 811, 812],
@@ -22,44 +22,35 @@ const pokemonData = [
     { id: 818, name: "Lézargus", type: ["Eau"], rarity: "Rare", desc: "Un tireur d'élite caché dans l'eau.", evoChain: [816, 817, 818],
       stats: { hp: 70, atk: 85, def: 65 }, attacks: [{name: "Tir de Précision", dmg: 80}, {name: "Hydrocanon", dmg: 110}] },
 
-    // --- SALARSEN 
+    // --- salarsen ---
     { id: 848, name: "Toxizap", type: ["Électrik", "Poison"], rarity: "Commune", desc: "Il stocke du poison dans sa poche interne.", evoChain: [848, 849],
       stats: { hp: 40, atk: 38, def: 35 }, attacks: [{name: "Acide", dmg: 40}, {name: "Frotte-Frimousse", dmg: 20}] },
     
-    // Salarsen Aigüe (JAUNE)
+    // aigue (jaune)
     { id: 849, useUrl: "https://img.pokemondb.net/sprites/home/normal/toxtricity-amped.png", name: "Salarsen (Aigüe)", type: ["Électrik", "Poison"], rarity: "Rare", desc: "Il gratte son torse comme une guitare électrique (Forme Jaune).", evoChain: [848, 849],
       stats: { hp: 75, atk: 98, def: 70 }, attacks: [{name: "Overdrive", dmg: 80}, {name: "Cradovague", dmg: 95}] },
     
-    // Salarsen Grave (BLEU)
+    // grave (bleu)
     { id: 8491, useUrl: "https://img.pokemondb.net/sprites/home/normal/toxtricity-low-key.png", name: "Salarsen (Grave)", type: ["Électrik", "Poison"], rarity: "Rare", desc: "Il génère de l'électricité avec des sons de basse (Forme Bleue).", evoChain: [848, 8491],
       stats: { hp: 75, atk: 98, def: 70 }, attacks: [{name: "Overdrive", dmg: 80}, {name: "Choc Venin", dmg: 65}] },
 
-    // --- SHIFOURS (URSHIFU) ---
+    // --- shifours ---
     { id: 891, name: "Wushours", type: ["Combat"], rarity: "Rare", desc: "Il s'entraîne dur au Dojo.", evoChain: [891, 8921, 8922],
       stats: { hp: 60, atk: 90, def: 60 }, attacks: [{name: "Casse-Brique", dmg: 75}, {name: "Coup d'Boule", dmg: 70}] },
     
-    // Shifours Poing Final
     { id: 8921, displayId: "892", name: "Shifours (Poing Final)", type: ["Combat", "Ténèbres"], rarity: "Légendaire", desc: "Il abat ses ennemis d'un seul coup dévastateur.", evoChain: [891, 8921],
       stats: { hp: 100, atk: 130, def: 100 }, attacks: [{name: "Torracoup", dmg: 80}, {name: "Close Combat", dmg: 120}] },
     
-    // Shifours Mille Poings
     { id: 8922, useUrl: "https://img.pokemondb.net/sprites/home/normal/urshifu-rapid-strike.png", name: "Shifours (Mille Poings)", type: ["Combat", "Eau"], rarity: "Légendaire", desc: "Il submerge l'ennemi sous une pluie de coups fluides.", evoChain: [891, 8922],
       stats: { hp: 100, atk: 130, def: 100 }, attacks: [{name: "Torrent de Coups", dmg: 25}, {name: "Aqua-Brèche", dmg: 85}] },
 
-    //  AUTRES FAMILLES 
+    // --- autres familles ---
     { id: 859, name: "Grimalin", type: ["Ténèbres", "Fée"], rarity: "Commune", desc: "Il se nourrit de l'énergie négative.", evoChain: [859, 860, 861],
       stats: { hp: 45, atk: 45, def: 30 }, attacks: [{name: "Fourberie", dmg: 60}, {name: "Vampibaiser", dmg: 50}] },
     { id: 860, name: "Fourbelin", type: ["Ténèbres", "Fée"], rarity: "Peu Commune", desc: "Il utilise ses cheveux comme une lance.", evoChain: [859, 860, 861],
       stats: { hp: 65, atk: 60, def: 45 }, attacks: [{name: "Câlinerie", dmg: 90}, {name: "Coup Bas", dmg: 70}] },
     { id: 861, name: "Angoliath", type: ["Ténèbres", "Fée"], rarity: "Rare", desc: "Il utilise ses cheveux comme des muscles.", evoChain: [859, 860, 861],
       stats: { hp: 95, atk: 120, def: 65 }, attacks: [{name: "Choc Émotionnel", dmg: 75}, {name: "Dark Lariat", dmg: 85}] },
-
-    { id: 837, name: "Charbi", type: ["Roche"], rarity: "Commune", desc: "Il peut rouler sur des terrains accidentés.", evoChain: [837, 838, 839],
-      stats: { hp: 30, atk: 40, def: 50 }, attacks: [{name: "Jet-Pierres", dmg: 50}, {name: "Tour Rapide", dmg: 20}] },
-    { id: 838, name: "Wagomine", type: ["Roche", "Feu"], rarity: "Peu Commune", desc: "Il transporte du charbon sur son dos.", evoChain: [837, 838, 839],
-      stats: { hp: 80, atk: 60, def: 90 }, attacks: [{name: "Éboulement", dmg: 75}, {name: "Nitrocharge", dmg: 50}] },
-    { id: 839, name: "Monthracite", type: ["Roche", "Feu"], rarity: "Rare", desc: "Une fournaise vivante.", evoChain: [837, 838, 839],
-      stats: { hp: 110, atk: 80, def: 120 }, attacks: [{name: "Goudronnerie", dmg: 0}, {name: "Surchauffe", dmg: 130}] },
 
     { id: 888, name: "Zacian", type: ["Fée", "Acier"], rarity: "Légendaire", desc: "Le héros à l'épée rouillée.", evoChain: [888],
       stats: { hp: 92, atk: 170, def: 115 }, attacks: [{name: "Lame Sainte", dmg: 90}, {name: "Tête de Fer", dmg: 80}] },
@@ -69,7 +60,7 @@ const pokemonData = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    //  THÈME
+    // 1. gestion du thème nuit/jour
     const themeBtn = document.getElementById('theme-toggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('theme');
@@ -94,19 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. GESTION DONNÉES 
+    // 2. on charge les données
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    let inventory = JSON.parse(localStorage.getItem('inventory')) || []; // Tableau d'IDs
+    let inventory = JSON.parse(localStorage.getItem('inventory')) || []; 
 
-    // Mise à jour des compteurs sur le profil
     function updateCounters() {
         const invCount = document.getElementById('inventory-count');
         const favCount = document.getElementById('fav-count');
-        if(invCount) invCount.innerText = `Cartes possédées : ${inventory.length}`;
+        if(invCount) invCount.innerText = `Cartes : ${inventory.length}`;
         if(favCount) favCount.innerText = `Favoris : ${favorites.length}`;
     }
 
-    //  FONCTION DE CRÉATION DE CARTE HTML 
+    // fonction pour créer la carte html
     function createCardHTML(pokemon) {
         const isFav = favorites.includes(pokemon.id);
         const isOwned = inventory.includes(pokemon.id);
@@ -114,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const ownClass = isOwned ? 'owned' : '';
         const ownText = isOwned ? '✓' : '◓';
 
-        // Image L
         let imgUrl = "";
         if (pokemon.useUrl) {
             imgUrl = pokemon.useUrl;
@@ -125,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const typesHTML = pokemon.type.map(t => `<span class="badge badge-${t}">${t}</span>`).join(' ');
 
-        // HTML des Attaques
         let attacksHTML = "";
         if(pokemon.attacks) {
             attacksHTML = pokemon.attacks.map(atk => `
@@ -136,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `).join('');
         }
 
-        // HTML des Stats 
         let statsHTML = "";
         if(pokemon.stats) {
             statsHTML = `
@@ -148,14 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        // Barre Évolution
         let evoHTML = '';
         if (pokemon.evoChain && pokemon.evoChain.length > 1) {
             evoHTML = `<div class="evo-chain">`;
             pokemon.evoChain.forEach((evoId, index) => {
                 let evoSrc = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${evoId}.png`;
-                
-                
                 if(evoId === 8921) evoSrc = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/892.png";
                 if(evoId === 8922) evoSrc = "https://img.pokemondb.net/sprites/home/normal/urshifu-rapid-strike.png";
                 if(evoId === 849) evoSrc = "https://img.pokemondb.net/sprites/home/normal/toxtricity-amped.png";
@@ -173,10 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-visual">
                     <img src="${imgUrl}" alt="${pokemon.name}" loading="lazy">
                     <div class="card-desc-overlay">
-                        <p class="desc">${pokemon.desc}</p> ${statsHTML}
-                        <div class="attacks-list">
-                            ${attacksHTML}
-                        </div>
+                        <p class="desc">${pokemon.desc}</p>
+                        ${statsHTML}
+                        <div class="attacks-list">${attacksHTML}</div>
                         <p class="rarity">${pokemon.rarity}</p>
                     </div>
                 </div>
@@ -195,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // AFFICHAGE DES GRILLES 
+    // 3. affichage des grilles
     const collectionGrid = document.getElementById('collection-grid');
     const inventoryGrid = document.getElementById('inventory-grid');
     const favGrid = document.getElementById('favorites-grid');
@@ -224,18 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (inventoryGrid && favGrid) {
         updateCounters();
-        
         const myPokemons = pokemonData.filter(p => inventory.includes(p.id));
-        if (myPokemons.length > 0) {
-            renderPokemons(myPokemons, inventoryGrid);
-        } else {
-            document.getElementById('no-inv-msg').style.display = 'block';
-        }
+        if (myPokemons.length > 0) renderPokemons(myPokemons, inventoryGrid);
+        else document.getElementById('no-inv-msg').style.display = 'block';
 
         const favPokemons = pokemonData.filter(p => favorites.includes(p.id));
-        if (favPokemons.length > 0) {
-            renderPokemons(favPokemons, favGrid);
-        }
+        if (favPokemons.length > 0) renderPokemons(favPokemons, favGrid);
     }
 
     function renderPokemons(list, container) {
@@ -243,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         attachEventListeners(container);
     }
 
-    //  CLICS 
     function attachEventListeners(container) {
         container.querySelectorAll('.fav-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -276,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    //   ÉCHANGE
+    // 4. la modale d'échange
     const fabTrade = document.getElementById('fab-trade');
     const modal = document.getElementById('trade-modal');
     const closeModal = document.querySelector('.close-modal');
@@ -286,11 +262,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fabTrade && modal) {
         fabTrade.addEventListener('click', () => {
             modal.classList.remove('hidden');
-            tradeSelect.innerHTML = '<option value="">-- Sélectionnez une carte --</option>';
+            tradeSelect.innerHTML = '<option value="">-- Choisis une carte --</option>';
             const myCards = pokemonData.filter(p => inventory.includes(p.id));
             if(myCards.length === 0) {
                 const opt = document.createElement('option');
-                opt.text = "Inventaire vide !";
+                opt.text = "T'as rien à échanger !";
                 opt.disabled = true;
                 tradeSelect.add(opt);
             } else {
@@ -327,10 +303,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //  SIDENAV MOBILE 
+    // 5. le menu mobile
     const burgerBtn = document.getElementById('burger-btn');
     const closeBtn = document.getElementById('close-btn');
     const sidebar = document.getElementById('sidebar');
     if (burgerBtn) burgerBtn.addEventListener('click', () => sidebar.classList.add('active'));
     if (closeBtn) closeBtn.addEventListener('click', () => sidebar.classList.remove('active'));
+    
+    // 6. garder l'email en mémoire
+    const loginForm = document.getElementById('login-form');
+    const emailInput = document.getElementById('email');
+    if (loginForm && emailInput) {
+        const savedEmail = localStorage.getItem('userEmail');
+        if (savedEmail) emailInput.value = savedEmail;
+        emailInput.addEventListener('input', (e) => localStorage.setItem('userEmail', e.target.value));
+    }
 });
