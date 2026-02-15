@@ -13,12 +13,18 @@
         <div class="logo">
             <h1>Poké<span>Game</span></h1>
         </div>
-        <nav class="nav-menu">
+        
+        <div class="header-controls">
+            <button id="theme-toggle" class="theme-btn">🌙</button>
+            <button id="burger-btn" aria-label="Ouvrir le menu">☰</button>
+        </div>
+
+        <nav id="sidebar" class="nav-menu">
+            <button id="close-btn" aria-label="Fermer le menu">&times;</button>
             <ul>
                 <li><a href="index.html" class="active">Collection</a></li>
                 <li><a href="profile.html">Mon Inventaire</a></li>
                 <li><a href="login.html">Déconnexion</a></li>
-                <li><button id="theme-toggle" class="theme-btn">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -26,7 +32,7 @@
     <main class="container">
         <section class="filters glass-panel">
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Rechercher un Pokémon...">
+                <input type="text" id="search-input" placeholder="Chercher un Pokémon...">
             </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-type="all">Tout</button>
@@ -40,8 +46,7 @@
             </div>
         </section>
 
-        <section class="card-grid" id="collection-grid">
-            </section>
+        <section class="card-grid" id="collection-grid"></section>
     </main>
 
     <div class="fab-container">
@@ -54,22 +59,20 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2>Centre d'Échange</h2>
-            <p style="margin-bottom: 15px; color: #666; font-size: 0.9rem;">Échangez une de vos cartes contre une carte aléatoire mystère !</p>
+            <p style="margin-bottom: 15px; color: #666; font-size: 0.9rem;">Échange une carte pour en avoir une nouvelle au hasard !</p>
             <form id="trade-form">
                 <div class="form-group">
-                    <label>Partenaire d'échange :</label>
+                    <label>Avec qui ?</label>
                     <select class="modal-select">
-                        <option>Tarak (Maître)</option>
-                        <option>Nabil (Rival)</option>
+                        <option>Tarak</option>
+                        <option>Nabil</option>
                         <option>Rosemary</option>
-                        <option>Peterson</option>
-                        <option>Travis</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Carte à céder (Inventaire) :</label>
+                    <label>Tu donnes quoi ?</label>
                     <select id="trade-select" class="modal-select" required>
-                        <option value="">-- Sélectionnez une carte --</option>
+                        <option value="">-- Choisis une carte --</option>
                     </select>
                 </div>
                 <button type="submit" class="btn-primary full-width">Valider l'échange</button>
@@ -80,7 +83,7 @@
     <footer>
         <div class="footer-content">
             <img src="https://www.iim.fr/ecole-web/wp-content/uploads/2020/10/Logo-IIM-fd-blanc.png" alt="Logo IIM" class="footer-logo">
-            <p>Projet Mohamed Nimaga IIM - Axe CDI 2025-2026 - PokéGame</p>
+            <p>Projet Mohamed Nimaga IIM - Axe CDI 2025-2026</p>
         </div>
     </footer>
 
