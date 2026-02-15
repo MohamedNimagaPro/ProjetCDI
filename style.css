@@ -1,0 +1,14 @@
+/* --- LE CHEF D'ORCHESTRE --- */
+/* Importation des modules dans l'ordre précis */
+
+/* 1. Les variables (Couleurs, Polices) */
+@import url('css/variables.css');
+
+/* 2. La base (Reset, Body, Typographie) */
+@import url('css/base.css');
+
+/* 3. La structure (Header, Footer, Grille) */
+@import url('css/layout.css');
+
+/* 4. Les composants (Cartes, Boutons, Modale, Formulaires) */
+@import url('css/components.css');
