@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Inventaire - PokéGame</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -12,12 +13,16 @@
         <div class="logo">
             <h1>Poké<span>Game</span></h1>
         </div>
-        <nav class="nav-menu">
+        <div class="header-controls">
+            <button id="theme-toggle" class="theme-btn">🌙</button>
+            <button id="burger-btn" aria-label="Menu Mobile">☰</button>
+        </div>
+        <nav id="sidebar" class="nav-menu">
+            <button id="close-btn" aria-label="Fermer le menu">&times;</button>
             <ul>
                 <li><a href="index.html">Collection</a></li>
                 <li><a href="profile.html" class="active">Mon Inventaire</a></li>
                 <li><a href="login.html">Déconnexion</a></li>
-                <li><button id="theme-toggle" class="theme-btn">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -31,24 +36,22 @@
                 <h2>Maître de la Ligue</h2>
                 <p>Rang : Champion Galar</p>
                 <div class="stats-user">
-                    <span id="inventory-count">Cartes possédées : 0</span> | 
+                    <span id="inventory-count">Cartes : 0</span> | 
                     <span id="fav-count">Favoris : 0</span>
                 </div>
             </div>
         </section>
 
-        <h2 class="section-title">Mon Inventaire (Cartes Capturées)</h2>
-        <section class="card-grid" id="inventory-grid">
-            </section>
+        <h2 class="section-title">Mon Inventaire</h2>
+        <section class="card-grid" id="inventory-grid"></section>
+        
         <div id="no-inv-msg" style="text-align:center; display:none; margin-bottom: 40px;">
-            <p style="color: var(--text);">Votre inventaire est vide. Capturez des Pokémon !</p>
-            <a href="index.html" class="btn-primary" style="display:inline-block; width:auto; margin-top:10px;">Aller chasser</a>
+            <p style="color: var(--text);">T'as rien pour l'instant. Va chasser !</p>
+            <a href="index.html" class="btn-primary" style="display:inline-block; width:auto; margin-top:10px;">Chasser</a>
         </div>
 
-        <h2 class="section-title" style="margin-top: 50px; border-top: 1px solid var(--glass-border); padding-top: 20px;">Mes Favoris</h2>
-        <section class="card-grid" id="favorites-grid">
-            </section>
-        
+        <h2 class="section-title" style="margin-top: 50px; border-top: 1px solid var(--glass-border); padding-top: 20px;">Favoris</h2>
+        <section class="card-grid" id="favorites-grid"></section>
     </main>
 
     <footer>
