@@ -1,5 +1,5 @@
 :root {
-    /*  MODE JOUR  */
+    /* mode jour par défaut */
     --bg-image: url('../backgroundpokemon.jpg'); 
     --glass-bg: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(255, 255, 255, 0.6);
@@ -16,7 +16,7 @@
     --radius: 16px;
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
-    /* Couleurs Types */
+    /* les couleurs des types */
     --t-plante: #78C850; --t-feu: #F08030; --t-eau: #6890F0;
     --t-electrik: #F8D030; --t-psy: #F95587; --t-combat: #C22E28;
     --t-tenebres: #705746; --t-fee: #EE99AC; --t-dragon: #6F35FC;
@@ -25,7 +25,7 @@
     --t-vol: #A98FF3; --t-insecte: #A6B91A; --t-poison: #A33EA1;
 }
 
-/*  MODE NUIT  */
+/* mode nuit (ectoplasma style) */
 body.night-mode {
     --bg-image: url('../backgroundpokemonnight.jpg'); 
     --glass-bg: rgba(20, 20, 40, 0.85);
