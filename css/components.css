@@ -1,4 +1,4 @@
-/* BOUTONS */
+/* les boutons */
 .btn-primary {
     background: linear-gradient(45deg, var(--secondary), #c0392b);
     color: white; padding: 12px; border: none; border-radius: 8px;
@@ -8,13 +8,14 @@
 
 .theme-btn {
     background: transparent; border: 2px solid var(--text);
-    color: var(--text); padding: 5px 10px; border-radius: 20px;
+    color: var(--text); padding: 5px 12px; border-radius: 20px;
     cursor: pointer; font-size: 1.2rem; transition: 0.3s;
+    display: flex; align-items: center; justify-content: center;
 }
 .theme-btn:hover { background: var(--text); color: var(--glass-bg); }
 .absolute-btn { position: absolute; top: 20px; right: 20px; }
 
-/*  FILTRES */
+/* les filtres */
 .filters { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
 .search-box input {
     padding: 12px 20px; border-radius: 30px; border: 1px solid var(--glass-border);
@@ -29,7 +30,7 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 }
 .filter-btn:hover, .filter-btn.active { background: var(--primary); color: #fff; }
 
-/*  CARTE POKÉMON */
+/* style de la carte pokémon */
 .card {
     background: var(--card-bg);
     border-radius: var(--radius);
@@ -42,7 +43,6 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 }
 .card:hover { transform: translateY(-10px); z-index: 10; }
 
-/* Bordures Types */
 .card.Plante { border-color: var(--t-plante); } .card.Feu { border-color: var(--t-feu); }
 .card.Eau { border-color: var(--t-eau); } .card.Électrik { border-color: var(--t-electrik); }
 .card.Fée { border-color: var(--t-fee); } .card.Dragon { border-color: var(--t-dragon); }
@@ -56,12 +56,11 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 .card-visual img { width: 85%; height: 85%; object-fit: contain; transition: transform 0.3s; z-index: 2; }
 .card:hover .card-visual img { transform: scale(1.1); filter: blur(3px); opacity: 0.3; }
 
-/* Overlay Description et Stats */
+/* l'overlay qui apparait au survol */
 .card-desc-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.85); color: #fff;
-    padding: 15px; 
-    display: flex; flex-direction: column; justify-content: center; text-align: left;
+    padding: 15px; display: flex; flex-direction: column; justify-content: center; text-align: left;
     opacity: 0; transition: opacity 0.3s; z-index: 3; pointer-events: none;
 }
 .card:hover .card-desc-overlay { opacity: 1; }
@@ -69,7 +68,6 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 .desc { font-size: 0.9rem; margin-bottom: 10px; font-style: italic; color: #ddd; border-bottom: 1px solid #555; padding-bottom: 5px; }
 .rarity { margin-top: 5px; color: var(--accent); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; text-align: right; }
 
-/* Barres de stats */
 .stats-table { width: 100%; font-size: 0.85rem; margin-bottom: 5px; }
 .stats-table td { padding: 2px 0; }
 .stat-bar { background: #444; height: 6px; width: 100%; border-radius: 3px; overflow: hidden; display:inline-block; vertical-align: middle; margin-left: 5px; max-width: 100px;}
@@ -79,7 +77,6 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 .attack-item { margin-bottom: 5px; font-size: 0.9rem; }
 .attack-dmg { float: right; color: var(--secondary); font-weight: bold; }
 
-/* Infos Carte (Bas) */
 .card-info {
     height: 50%; padding: 15px;
     background: var(--card-bg); color: var(--text);
@@ -109,7 +106,6 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 .badge-Glace { background: var(--t-glace); } .badge-Acier { background: var(--t-acier); }
 .badge-Spectre { background: var(--t-spectre); } .badge-Roche { background: var(--t-roche); }
 
-/* Évolutions */
 .evo-chain {
     margin-top: auto; padding-top: 10px; border-top: 1px solid var(--card-border);
     display: flex; justify-content: center; gap: 5px;
@@ -120,7 +116,7 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 }
 .evo-img.current { opacity: 1; width: 40px; height: 40px; border: 2px solid var(--primary); background: rgba(255,255,255,0.3); }
 
-/*  FAB et MODALE  */
+/* --- bouton flottant & modale --- */
 .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 50; }
 .fab-btn {
     width: 65px; height: 65px; border-radius: 50%;
@@ -145,7 +141,7 @@ body.night-mode .search-box input { background: rgba(0,0,0,0.5); color: #fff; }
 .close-modal { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; }
 .modal-select { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; background: white; color: #333;}
 
-/* --- PROFIL */
+/* --- spécifiques auth & profil --- */
 .profile-header { display: flex; gap: 20px; align-items: center; }
 .avatar-circle img { width: 110px; height: 110px; border-radius: 50%; border: 4px solid var(--accent); }
 
