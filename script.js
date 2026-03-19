@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. on charge les données
+    // 2. on charge les données (inventaire & favoris)
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let inventory = JSON.parse(localStorage.getItem('inventory')) || []; 
 
@@ -209,7 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCounters();
         const myPokemons = pokemonData.filter(p => inventory.includes(p.id));
         if (myPokemons.length > 0) renderPokemons(myPokemons, inventoryGrid);
-        else document.getElementById('no-inv-msg').style.display = 'block';
+        else {
+            const noInvMsg = document.getElementById('no-inv-msg');
+            if(noInvMsg) noInvMsg.style.display = 'block';
+        }
 
         const favPokemons = pokemonData.filter(p => favorites.includes(p.id));
         if (favPokemons.length > 0) renderPokemons(favPokemons, favGrid);
@@ -262,24 +265,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fabTrade && modal) {
         fabTrade.addEventListener('click', () => {
             modal.classList.remove('hidden');
-            tradeSelect.innerHTML = '<option value="">-- Choisis une carte --</option>';
-            const myCards = pokemonData.filter(p => inventory.includes(p.id));
-            if(myCards.length === 0) {
-                const opt = document.createElement('option');
-                opt.text = "T'as rien à échanger !";
-                opt.disabled = true;
-                tradeSelect.add(opt);
-            } else {
-                myCards.forEach(card => {
+            if(tradeSelect) {
+                tradeSelect.innerHTML = '<option value="">-- Choisis une carte --</option>';
+                const myCards = pokemonData.filter(p => inventory.includes(p.id));
+                if(myCards.length === 0) {
                     const opt = document.createElement('option');
-                    opt.value = card.id;
-                    opt.text = card.name;
+                    opt.text = "T'as rien à échanger !";
+                    opt.disabled = true;
                     tradeSelect.add(opt);
-                });
+                } else {
+                    myCards.forEach(card => {
+                        const opt = document.createElement('option');
+                        opt.value = card.id;
+                        opt.text = card.name;
+                        tradeSelect.add(opt);
+                    });
+                }
             }
         });
 
-        closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+        if(closeModal) {
+            closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+        }
         window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.add('hidden'); });
 
         if (tradeForm) {
@@ -310,12 +317,108 @@ document.addEventListener('DOMContentLoaded', () => {
     if (burgerBtn) burgerBtn.addEventListener('click', () => sidebar.classList.add('active'));
     if (closeBtn) closeBtn.addEventListener('click', () => sidebar.classList.remove('active'));
     
-    // 6. garder l'email en mémoire
-    const loginForm = document.getElementById('login-form');
-    const emailInput = document.getElementById('email');
-    if (loginForm && emailInput) {
+    // 6. FORMULAIRE ET VALIDATION (Exo DOM)
+    const form = document.querySelector('#login-form');
+    
+    // On vérifie que le formulaire existe sur cette page (page login.html)
+    if (form) {
+        
+        let pseudo = document.querySelector('#pseudo');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#password');
+        let passwordRepeat = document.querySelector('#passwordRepeat');
+        
+        // On récupère l'email s'il y en a un de sauvegardé
         const savedEmail = localStorage.getItem('userEmail');
-        if (savedEmail) emailInput.value = savedEmail;
-        emailInput.addEventListener('input', (e) => localStorage.setItem('userEmail', e.target.value));
+        if (savedEmail && email) email.value = savedEmail;
+
+        form.addEventListener('submit', function(event) {
+            // Empêche le rechargement de la page
+            event.preventDefault();
+            console.log('Envoi du form détecté !');
+
+            let errorContainer = document.querySelector('.message-error');
+            let errorList = document.querySelector('#errorList');
+            let successContainer = document.querySelector('.message-success');
+
+            // Réinitialisation des messages
+            errorList.innerHTML = '';
+            errorContainer.classList.remove('visible');
+            successContainer.classList.remove('visible');
+
+            let hasErrors = false;
+
+            // Vérification PSEUDO (min 6 caractères)
+            if (pseudo.value.length < 6) {
+                hasErrors = true;
+                errorContainer.classList.add('visible');
+                pseudo.classList.remove('success');
+                
+                let err = document.createElement('li');
+                err.innerText = "Le champ pseudo doit contenir au moins 6 caractères.";
+                errorList.appendChild(err);
+            } else {
+                pseudo.classList.add('success');
+            }
+
+            // Vérification EMAIL (non vide et avec un @)
+            if (email.value.length === 0 || !email.value.includes('@')) {
+                hasErrors = true;
+                errorContainer.classList.add('visible');
+                email.classList.remove('success');
+                
+                let err = document.createElement('li');
+                err.innerText = "L'email n'est pas valide ou est vide.";
+                errorList.appendChild(err);
+            } else {
+                email.classList.add('success');
+            }
+
+            // Vérification MOT DE PASSE (RegExp)
+            let passCheck = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&.,?]).+$");
+
+            if (password.value.length < 10 || passCheck.test(password.value) === false) {
+                hasErrors = true;
+                errorContainer.classList.add('visible');
+                password.classList.remove('success');
+                
+                let err = document.createElement('li');
+                err.innerText = "Le mot de passe doit faire 10 caractères min., contenir majuscule, minuscule, chiffre et caractère spécial.";
+                errorList.appendChild(err);
+            } else {
+                password.classList.add('success');
+            }
+
+            // Vérification CONFIRMATION MOT DE PASSE
+            if (passwordRepeat.value !== password.value || passwordRepeat.value === "") {
+                hasErrors = true;
+                errorContainer.classList.add('visible');
+                passwordRepeat.classList.remove('success');
+                
+                let err = document.createElement('li');
+                err.innerText = "Les mots de passe ne correspondent pas.";
+                errorList.appendChild(err);
+            } else {
+                passwordRepeat.classList.add('success');
+            }
+
+            // SUCCÈS FINAL
+            if(
+                pseudo.classList.contains('success') &&
+                email.classList.contains('success') &&
+                password.classList.contains('success') &&
+                passwordRepeat.classList.contains('success')
+            ) {
+                errorContainer.classList.remove('visible');
+                successContainer.classList.add('visible');
+                
+                // Sauvegarde de l'email et redirection vers l'accueil
+                localStorage.setItem('userEmail', email.value);
+                setTimeout(() => {
+                    window.location.href = "index.html"; 
+                }, 1500);
+            }
+        });
     }
+
 });
