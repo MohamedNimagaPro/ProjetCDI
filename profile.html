@@ -4,8 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Inventaire - PokéGame</title>
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <style>
+        .swiper-banner-container {
+            width: 100%;
+            height: 400px; /* Hauteur de la bannière */
+            margin: 30px 0; /* Espace autour du swiper */
+            border-radius: 15px; /* Bords arrondis pour coller au style de ton site */
+            overflow: hidden; /* Empêche l'image de dépasser des bords arrondis */
+            background: #000;
+        }
+
+        .swiper-slide {
+            font-size: 18px;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 130%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .swiper-slide .title {
+            font-size: 35px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif; /* Utilisation de ta police */
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .swiper-slide .subtitle {
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: #f1c40f;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .swiper-slide .text {
+            font-size: 15px;
+            max-width: 500px;
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 <body>
 
@@ -42,6 +100,40 @@
             </div>
         </section>
 
+        <div class="swiper mySwiper swiper-banner-container" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff">
+            
+            <div class="parallax-bg" style="background-image: url('pokemob.jpg');" data-swiper-parallax="-23%"></div>
+            
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="title" data-swiper-parallax="-300">La Région de Galar</div>
+                <div class="subtitle" data-swiper-parallax="-200">Un monde inspiré du Royaume-Uni</div>
+                <div class="text" data-swiper-parallax="-100">
+                  <p>Bienvenue à Galar, une région vaste et diversifiée mêlant des campagnes paisibles, des forêts épaisses et des villes à l'architecture industrielle très développée. Ici, les combats Pokémon sont le sport national !</p>
+                </div>
+              </div>
+              
+              <div class="swiper-slide">
+                <div class="title" data-swiper-parallax="-300">Les Terres Sauvages</div>
+                <div class="subtitle" data-swiper-parallax="-200">L'aventure en monde ouvert</div>
+                <div class="text" data-swiper-parallax="-100">
+                  <p>Au cœur de Galar se trouve une immense étendue de nature : les Terres Sauvages. La météo très changeante influence directement les espèces de Pokémon surpuissants que vous croiserez en liberté.</p>
+                </div>
+              </div>
+              
+              <div class="swiper-slide">
+                <div class="title" data-swiper-parallax="-300">Le Phénomène Dynamax</div>
+                <div class="subtitle" data-swiper-parallax="-200">Des affrontements titanesques</div>
+                <div class="text" data-swiper-parallax="-100">
+                  <p>Grâce au Poignet Dynamax, les Pokémon prennent des proportions colossales lors des combats, décuplant leur puissance et modifiant leurs attaques. Certains possèdent même une forme "Gigamax" !</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
         <h2 class="section-title">Mon Inventaire</h2>
         <section class="card-grid" id="inventory-grid"></section>
         
@@ -61,6 +153,23 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    
     <script src="script.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            speed: 600,
+            parallax: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </body>
 </html>
